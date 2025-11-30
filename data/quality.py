@@ -1,11 +1,11 @@
-import numpy as np
 import pandas as pd
+from pandas import DataFrame
 
 
 class DataQualityChecker:
     """Performs basic data quality checks: missing values, dtypes, outliers."""
 
-    def check_missing_values(self, X: pd.DataFrame, y: pd.Series) -> pd.Series:
+    def check_missing_values(self, X: pd.DataFrame, y: pd.Series) -> DataFrame:
         missing_X = X.isnull().sum()
         missing_y = pd.Series({"target": y.isnull().sum()})
         return pd.concat([missing_X, missing_y])
